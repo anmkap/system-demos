@@ -1,0 +1,10 @@
+Master process splits workload among worker processes. Worker processes concurrently add elements of an array and report to master process. Master process aggregates the sum.
+
+build:
+make compile
+
+clean:
+make clean
+
+run:
+mpirun -np 4 sub	// -np specifies number of spawned processes

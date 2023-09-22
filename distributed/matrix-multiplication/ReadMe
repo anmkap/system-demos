@@ -1,0 +1,25 @@
+
+Parallel matrix multiplication
+
+build:
+$ make compile
+
+clean:
+$ make clean
+
+generate input file:
+$ python gen.py [file-name] [#rows-matrix1] [#columns-matrix1] [#columns-matrix2]
+e.g:
+$ python gen.py in.txt 800 1200 800
+
+run:
+$ ./mul [#threads] [input-file]
+e.g. running single thread multiplication:
+$ ./mul 1 in.txt
+e.g. running 8-thread multiplication:
+$ ./mul 8 in.txt
+
+Notes:
+1) [#columns-matrix1] also specifies [#rows-matrix2].
+2) For best results, run as many threads as you have cores.
+3) mul will print the result to stdout and print below it the time in milliseconds it took to perform the multiplication (doesn't include the time to load the input from the input file and print the output to stdout).

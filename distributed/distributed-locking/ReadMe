@@ -1,0 +1,32 @@
+-------------------
+Distributed Locking
+-------------------
+
+clean:
+$ make clean
+
+build:
+$ make
+
+run coordinator (proc_id = 1):
+$ ./sub 1 [port_number]
+
+run incrementer process:
+$ ./sub [proc_id] [coordinator_port]
+
+
+Testing:-
+
+Run the server in a terminal:
+$ ./sub 1 44445
+
+Run multiple incrementer processes in a terminal:
+$ python run.py [num_proc] [coordinator_port]
+e.g)
+$ python run.py 5 44445
+
+Each incrementer increments the sum by 1000. You will see the sum printed to stdout
+To verify the sum, run:
+$ ./rsum
+To reset the sum to zero and test again, run:
+$ make

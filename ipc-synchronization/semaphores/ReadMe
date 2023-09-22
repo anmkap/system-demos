@@ -1,0 +1,13 @@
+Solving the producer-consumer (bounded buffer) problem using semaphores and a mutex
+
+This code sets up a lazy consumer thread. The producer thread keeps filling the shared integer buffer until it's full, after which it has to wait for the consumer to empty out an integer before it can put an integer.
+To reverse the effect, switch the producerSleep and consumerSleep values.
+
+build:
+make compile
+
+clean:
+make clean
+
+run:
+./sub

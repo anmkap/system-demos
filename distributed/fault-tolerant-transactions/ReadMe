@@ -1,0 +1,55 @@
+-----------------------------------------------------------------
+Distributed Concurrent Fault-Tolerant Loyalty Transaction Service
+-----------------------------------------------------------------
+
+clean:
+$ make clean
+
+build:
+$ make
+
+run front-end server:
+$ ./server <port-number> <number-of-backend-procs> <backend-1-port> <backend-2-port> ...
+e.g) when running 3 back-end processes
+$ ./server 44444 3 33330 33331 33332
+
+run back-end server:
+$ ./bserver <back-end-port>
+e.g)
+$ ./bserver 33330
+
+run client:
+$ ./client <front-end-port> <host-name>
+e.g)
+$ ./client <44444> <localhost>
+
+-----------------------------------------------------------
+
+Testing the program with 3 back-end processes:-
+
+1) Run the front-end server in a terminal
+term0$ ./server 44444 3 33330 33331 33332
+
+2) Run the back-end processes each in a seperate terminal
+term1$ ./bserver 33330
+term2$ ./bserver 33331
+term3$ ./bserver 33332
+
+3) Run the client in another terminal
+term4$ ./client 44444 localhost
+
+-----------------------------------------------------------
+
+The client supports the following commands:
+create <amount>			// returns the ID of the new account
+update <account> <amount>	// returns the new amount or account doesn't exist
+query <account>			// returns the amount or account doesn't exist
+quit				// exits the client session
+
+-----------------------------------------------------------
+
+Notes:-
+1) Every back-end process creates a database file called <port-number>.txt which holds the account information.
+2) Every back-end process creates a file called <port-number>_tmp.txt when the update command is used.
+3) When a back-end process dies it is excluded from the 2-phase commit vote and the remaining back-end processes continue their normal operation.
+

@@ -1,0 +1,17 @@
+Processes concurrently increment a sum stored in a memory mapped file
+Adding protection with semaphores
+
+initialize a memory mapped file 'mm' which will contain the sum:
+dd if=/dev/zero of=mm count=1 bs=1M
+
+build:
+make compile
+
+clean:
+make clean
+
+run incrementer:
+.sub
+
+run decrementer:
+./sub 1

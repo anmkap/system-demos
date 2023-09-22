@@ -1,0 +1,13 @@
+Using a named pipe for communication between processes
+
+build:
+make compile
+
+clean:
+make clean
+
+run writing process:
+./sub
+
+run reading process:
+./sub 1
