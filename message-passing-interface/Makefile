@@ -1,4 +1,3 @@
-
 CC = mpicc
 
 compile:

@@ -22,5 +22,5 @@ $ ./mul 8 in.txt
 Notes
 -----
 1) [#columns-matrix1] also specifies [#rows-matrix2].
-2) For the best results run as many threads as you have cores.
+2) For the best performance run as many threads as you have cores.
 3) mul will print the result to stdout as well as the time it took to run the multiplication

@@ -1,4 +1,3 @@
-
 CC = g++
 
 compile: server.cpp client.cpp
