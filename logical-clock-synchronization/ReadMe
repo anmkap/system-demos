@@ -1,0 +1,23 @@
+-----------------------------
+Logical Clock Synchronization
+-----------------------------
+Clean
+$ make clean
+
+Build
+$ make
+
+Run time server (proc_id = 1)
+$ ./sub 1 [server_port] [num_proc] [proc_1_port] [proc_2_port] ...
+
+Run worker process
+$ ./sub [proc_id] [proc_port] 0
+
+Testing
+-------
+1) Run the workers in separate terminals
+term0$ ./sub 2 33331 0
+term1$ ./sub 3 33332 0
+
+2) Run the server
+term2$ ./sub 1 44444 2 33331 33332

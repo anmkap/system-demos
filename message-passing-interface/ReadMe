@@ -1,0 +1,15 @@
+-------------------------------------
+Concurrency and Communication via MPI
+-------------------------------------
+Master process splits the workload among the worker processes.
+Workers concurrently add elements of an array and report to the master process.
+Master process aggregates the sum.
+-------------------------------------
+Build
+$ make compile
+
+Clean
+$ make clean
+
+Run master and np-1 workers
+$ mpirun -np 4 sub

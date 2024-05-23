@@ -1,0 +1,14 @@
+-------------------------------------------------------
+Using shared memory for communication between processes
+-------------------------------------------------------
+Build
+$ make compile
+
+Clean
+$ make clean
+
+Run writer process
+$ ./sub <string>
+
+Run reader process
+$ ./sub

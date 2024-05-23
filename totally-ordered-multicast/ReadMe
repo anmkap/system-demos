@@ -1,0 +1,31 @@
+-------------------------
+Totally Ordered Multicast
+-------------------------
+Clean
+$ make clean
+
+Build
+$ make
+
+Run the coordinator process (proc_id = 1)
+$ ./sub 1 [coordinator_port] [num_proc] [proc_1_port] [proc_2_port] ...
+
+Run worker process
+$ ./sub [proc_id] [proc_port] 1 [coordinator_port]
+
+Testing
+-------
+1) First run the coordinator
+$ term0$ ./sub 1 44445 2 33331 33332
+
+2) Run worker processes in separate terminals in quick succession
+$ term1$ ./sub 2 33331 1 44445 > out2
+$ term2$ ./sub 3 33332 1 44445 > out2
+
+Notes
+-----
+Coordinator process will print the forwarded messages to stdout.
+When the clients exit, the coordinator will print "Error connecting".
+You can now open the output files and to inspect the order of message delivery.
+You can also compare the output files by running:> diff out1 out2 | grep Delivered
+The last delivered message(s) could be printed if they were delivered to one process when the other had just exited.

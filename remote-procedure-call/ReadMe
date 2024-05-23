@@ -1,0 +1,29 @@
+------------------
+Simple RPC program
+------------------
+Client sends string to server.
+Server prints the string and sends back a random number.
+Client prints the random number.
+------------------
+Download rpcbind
+
+Run rpcbind
+$ rpcbind 
+
+make sure rcpbind is running:
+rpcinfo
+
+// Create .x file (msg.x) containing the program name and program number.
+// Use a struct to pass more than one variable to the remote procedure if necessary.
+//
+// Compile
+// $ rpcgen -a -C msg.x
+
+Make
+$ make -f Makefile.msg
+
+Run server
+$ ./server
+
+Run client
+$ ./client <server-hostname> <string>

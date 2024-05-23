@@ -1,0 +1,49 @@
+---------------------------------------------------------
+Distributed Concurrent Fault-Tolerant Transaction Service
+---------------------------------------------------------
+Clean
+$ make clean
+
+Build
+$ make
+
+Run frontend
+$ ./server <port-number> <number-of-backend-procs> <backend-1-port> <backend-2-port> ...
+e.g) when running 3 back-end processes
+$ ./server 44444 3 33330 33331 33332
+
+Run backend
+$ ./bserver <back-end-port>
+e.g)
+$ ./bserver 33330
+
+Run client
+$ ./client <front-end-port> <host-name>
+e.g)
+$ ./client <44444> <localhost>
+
+Testing with 3 backend processes
+--------------------------------
+1) Run the frontend process
+$ term0$ ./server 44444 3 33330 33331 33332
+
+2) Run the backend processes in separate terminals
+$ term1$ ./bserver 33330
+$ term2$ ./bserver 33331
+$ term3$ ./bserver 33332
+
+3) Run the client
+$ term4$ ./client 44444 localhost
+
+Commands supported by the client
+--------------------------------
+create <amount> // returns the ID of the new account
+update <account> <amount> // returns the new amount or account doesn't exist
+query <account> // returns the amount or account doesn't exist
+quit // exits the client session
+
+Notes
+-----
+1) Each backend process creates a database file called <port-number>.txt to hold the account information.
+2) Each backend process creates a file called <port-number>_tmp.txt when the update command is used.
+3) When a backend process dies it is excluded from the 2-phase commit. The remaining backend processes continue normal operation.

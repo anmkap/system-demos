@@ -1,0 +1,15 @@
+-----------------------------------------------------------------------------------
+Solving the producer-consumer (bounded buffer) problem using semaphores and a mutex
+-----------------------------------------------------------------------------------
+The producer inserts into the shared buffer until it is full.
+The consumer pops from the buffer at a lower rate.
+Switch the producerSleep and consumerSleep values for a reversed effect.
+-----------------------------------------------------------------------------------
+Build
+$ make compile
+
+Clean
+$ make clean
+
+Run
+$ ./sub
