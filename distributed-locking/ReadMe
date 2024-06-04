@@ -28,5 +28,6 @@ Each incrementer will increment the sum by 1000. The sum is printed to stdout.
 
 Verify the sum
 $ ./rsum
-Reset the sum to zero
+
+Reset sum to zero
 $ make
